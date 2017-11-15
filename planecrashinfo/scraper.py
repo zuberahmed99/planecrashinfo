@@ -16,6 +16,9 @@ def get_page_html(link):
 def get_soup_object(html):
     return BeautifulSoup(html)
 
+def get_table_rows(soup):
+    rows = soup.find_all("tr")
+
 
 def get_data(starting_year, current_year):
     for year in range(starting_year, current_year+1):
