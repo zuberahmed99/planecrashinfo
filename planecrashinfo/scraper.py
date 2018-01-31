@@ -1,5 +1,6 @@
 import logging
 import requests
+import cv2
 from bs4 import BeautifulSoup
 
 logging.basicConfig(filename='scrape.log', level=20)
@@ -27,4 +28,4 @@ def get_data(starting_year, current_year):
         soup = get_soup_object(html)
 
 
-get_data(1996, 2000)
+get_data(1998, 2000)
