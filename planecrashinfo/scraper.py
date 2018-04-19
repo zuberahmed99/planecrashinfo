@@ -19,13 +19,16 @@ def get_soup_object(html):
 
 def get_table_rows(soup):
     rows = soup.find_all("tr")
+    return rows
 
-
+def parse_data(soup):
+    rows = get_table_rows(soup)
+    print(rows)
 
 def get_data(starting_year, current_year):
     for year in range(starting_year, current_year+1):
         html = get_page_html(URL + str(year) + "/" + str(year) + ".htm")
         soup = get_soup_object(html)
-
+        parse_data(soup)
 
 get_data(1998, 2000)
