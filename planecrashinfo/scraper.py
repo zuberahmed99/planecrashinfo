@@ -21,9 +21,19 @@ def get_table_rows(soup):
     rows = soup.find_all("tr")
     return rows
 
+def parse_rows(row):
+    values = row.findAll("font")
+    date = values[0].text
+    location = values[1].text
+    aircraft = values[2].text
+    fatalities = values[3].text
+    print (location)
+
 def parse_data(soup):
     rows = get_table_rows(soup)
-    print(rows)
+    for row in rows:
+        parse_rows(row)
+    #print(rows)
 
 def get_data(starting_year, current_year):
     for year in range(starting_year, current_year+1):
