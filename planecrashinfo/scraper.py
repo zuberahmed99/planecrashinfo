@@ -27,8 +27,12 @@ def parse_data(soup):
 
 def get_data(starting_year, current_year):
     for year in range(starting_year, current_year+1):
-        html = get_page_html(URL + str(year) + "/" + str(year) + ".htm")
-        soup = get_soup_object(html)
-        parse_data(soup)
+        get_year_data(year)
+
+def get_year_data(year):
+    html = get_page_html(URL + str(year) + "/" + str(year) + ".htm")
+    soup = get_soup_object(html)
+    parse_data(soup)
+
 
 get_data(1998, 2000)
