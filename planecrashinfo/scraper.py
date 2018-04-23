@@ -2,11 +2,14 @@ import logging
 import requests
 import cv2
 from bs4 import BeautifulSoup
+import pandas as pd
 
 logging.basicConfig(filename='scrape.log', level=20)
 logging.info('Initialized logger')
 
 URL = "http://www.planecrashinfo.com/"
+CSV_FILE = "crash_list.csv"
+
 
 def get_page_html(link):
     response = requests.get(link)
@@ -23,6 +26,7 @@ def get_table_rows(soup):
 
 def parse_rows(row):
     values = row.findAll("font")
+    date = location = aircraft = fatalities= "NA"
     date = values[0].text
     location = values[1].text
     aircraft = values[2].text
