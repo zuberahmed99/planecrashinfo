@@ -14,7 +14,6 @@ CSV_FILE = "crash_list.csv"
 
 def get_page_html(link):
     response = requests.get(link)
-    print(response.text)
     return response.text
 
 
@@ -68,7 +67,11 @@ def parse_data(soup):
 
 def get_data(starting_year, current_year):
     for year in range(starting_year, current_year+1):
-        get_year_data(year)
+        print ("getting data for year " + str(year))
+        try:
+            get_year_data(year)
+        except Exception as exp:
+            pass
 
 def get_year_data(year):
     html = get_page_html(URL + str(year) + "/" + str(year) + ".htm")
@@ -76,4 +79,4 @@ def get_year_data(year):
     parse_data(soup)
 
 
-get_data(1998, 2000)
+get_data(1921, 2018)
